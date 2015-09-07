@@ -1,0 +1,15 @@
+{
+  "name": "AudioLink",
+  "dependencies": {
+    "iron-icon": "~1.0.4",
+    "iron-pages": "PolymerElements/iron-pages#~1.0.3",
+    "paper-button": "PolymerElements/paper-button#~1.0.3",
+    "paper-fab": "PolymerElements/paper-fab#~1.0.3",
+    "paper-header-panel": "PolymerElements/paper-header-panel#~1.0.4",
+    "paper-input": "PolymerElements/paper-input#~1.0.12",
+    "paper-tabs": "PolymerElements/paper-tabs#~1.0.2",
+    "paper-toolbar": "PolymerElements/paper-toolbar#~1.0.4",
+    "polymer": "Polymer/polymer#1.0.0",
+    "slip": "https://github.com/pornel/slip.git#~1.2.0"
+  }
+}

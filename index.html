@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Audio Link</title>
+
+  <link href="bower_components/iron-icons/iron-icons.html" rel="import">
+  <link href="bower_components/paper-fab/paper-fab.html" rel="import">
+  <link href="bower_components/paper-toolbar/paper-toolbar.html" rel="import">
+  <link href="bower_components/iron-flex-layout/iron-flex-layout.html" rel="import">
+  <link href="bower_components/paper-tabs/paper-tab.html" rel="import">
+  <link href="bower_components/paper-tabs/paper-tabs.html" rel="import">
+  <link href="bower_components/paper-button/paper-button.html" rel="import">
+  <link href="bower_components/iron-pages/iron-pages.html" rel="import">
+  <link href="bower_components/paper-input/paper-input.html" rel="import">
+  <link href="bower_components/paper-vert-tabs/paper-vert-tabs.html" rel="import">
+
+  <link href='https://fonts.googleapis.com/css?family=Orbitron:500' rel='stylesheet' type='text/css'>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Orbitron, sans-serif;
+      font-size: 3vh;
+      height: 100%;
+      margin: 0px;
+    }
+
+    .songButton {
+      background: #3367d6;
+      color: white;
+    }
+
+    paper-button {
+      user-select: none;
+    }
+
+    .slip-reordering {
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+
+    .slip-swiping-container {
+      overflow: hidden;
+    }
+
+    .player-UI {
+      color: mediumpurple;
+    }
+
+    .tab {
+      font-size: 3vh;
+      color: white;
+      background-color: #3f51b5;
+    }
+
+    .connectionNode {
+      user-select: none;
+      background: #3367d6;
+      color: white;
+    }
+  </style>
+</head>
+<body class="fullbleed layout vertical">
+  <paper-toolbar class="layout vertical" style="display: block;">
+    <div class="title" class="flex">Audio Link</div>
+  </paper-toolbar>
+  <paper-vert-tabs id="tabs" class="layout vertical" selected="1">
+      <paper-tab class="flex tab" raised>Player</paper-tab>
+      <paper-tab class="flex tab" raised>Song List</paper-tab>
+      <paper-tab class="flex tab" raised>Connections</paper-tab>
+  </paper-vert-tabs>
+  <iron-pages selected="1" id="pages" class="layout vertical flex">
+    <div id="player" class="flex layout vertical" main>
+      <audio id="sound"></audio>
+      <div style="height: 10vh; display: block;"></div>
+      <div id="songTitle" class="flex five center" style="text-align: center;">No Songs (Go to the Songs Tab and add a song)</div>
+      <div id="inteface" class="horizontal layout justified">
+        <paper-button onclick="lastSong()" class="flex player-UI">
+          &lt;&lt;Last Song
+        </paper-button>
+        <paper-button id="playButton" onclick="playButtonClick()" class="flex player-UI">
+           NO SONG
+        </paper-button>
+        <paper-button onclick="nextSong()" class="flex player-UI">
+          Next Song&gt;&gt;
+        </paper-button>
+      </div>
+    </div>
+    <div id="songList" class="vertical start-center-justified layout flex"></div>
+    <div id="connection" class="vertical start-center-justified layout flex">
+      <div style="height: 6vh;"></div>
+      <paper-input id="peerID" label="ID to be Requested" style="height: 10vh"></paper-input>
+      <paper-button onClick="requestID(this)" style="height: 10vh; box-shadow: 0 3px 10px rgba(0,0,0,0.2);">Request!</paper-button>
+      <div id="yourID" style="height: 10vh; display: none;">Your ID is: </div>
+      <ul id="connectionList" class="flex">Connections:</ul>
+    </div>
+  </iron-pages>
+  <div id="bottomRow" class="layout horizontal">
+    <span class="flex" style="text-align: right">Add Audio</span>
+    <paper-fab id="addSongButton" icon="add" onclick="document.getElementById('fileInput').click()"></paper-fab>
+    <input style="display:none;" id="fileInput" type="file" onchange="loadSong(this)" />
+  </div>
+  <div style="height: 15px"></div>
+  <script type="text/javascript" src="bower_components/slip/slip.js"></script>
+  <script type="text/javascript" src="songs.js"></script>
+  <script type="text/javascript" src="audio.js"></script>
+  <script src="https://cdn.rawgit.com/peers/peerjs/master/dist/peer.min.js"></script>
+  <script type="text/javascript" src="network.js"></script>
+</body>
+</html>
