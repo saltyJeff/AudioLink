@@ -4,6 +4,15 @@ var conn;
 var audio = document.getElementById("audio");
 var info = document.getElementById("info");
 var pausedTxt = document.getElementById("pausedTxt");
+var timeTxt = document.getElementById("timeTxt");
+
+setInterval (function () {
+  if(!audio.paused) {
+    var a = audio.currentTime;
+    timeTxt.textContent = a;
+  }
+}, 1000);
+
 var songs = [];
 
 function initConnection(id) {
@@ -88,7 +97,7 @@ function initConnection(id) {
 
           audio.src = currentSong.uri;
           
-          var timeDifference = Number.parseInt((Date.now() - data.msg[2]))/1000;
+          var timeDifference = (Date.now() - data.msg[2])/1000;
           
           audio.currentTime = data.msg[1] + timeDifference;
           audio.play();
@@ -99,6 +108,7 @@ function initConnection(id) {
     }
     
     if(data.msgType == "paused") {
+      console.log("Recieved Pause");
       audio.pause();
       pausedTxt.style.display = "block";
     }

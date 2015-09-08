@@ -74,6 +74,9 @@ function updateOrder() {
 }
 
 function sendToAll(msg) {
+  if(peer == null) {
+    return;
+  }
   for(var i in peer.connections) {
     var conn = peer.connections[i][0];
     conn.send(msg);

@@ -71,7 +71,7 @@
       <paper-tab class="flex tab" raised>Connections</paper-tab>
   </paper-vert-tabs>
   <iron-pages selected="1" id="pages" class="layout vertical flex">
-    <div id="player" class="flex layout vertical" main>
+    <div id="player" class="flex layout vertical center" main>
       <audio id="sound"></audio>
       <div style="height: 10vh; display: block;"></div>
       <div id="songTitle" class="flex five center" style="text-align: center;">No Songs (Go to the Songs Tab and add a song)</div>
@@ -85,6 +85,9 @@
         <paper-button onclick="nextSong()" class="flex player-UI">
           Next Song&gt;&gt;
         </paper-button>
+      </div>
+      <div class="horizontal layout">
+        <paper-input id="timeTxt"></paper-input>
       </div>
     </div>
     <div id="songList" class="vertical start-center-justified layout flex"></div>
@@ -102,6 +105,8 @@
     <input style="display:none;" id="fileInput" type="file" onchange="loadSong(this)" />
   </div>
   <div style="height: 15px"></div>
+  
+  
   <script type="text/javascript" src="bower_components/slip/slip.js"></script>
   <script type="text/javascript" src="songs.js"></script>
   <script type="text/javascript" src="audio.js"></script>

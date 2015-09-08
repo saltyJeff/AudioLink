@@ -1,15 +1,25 @@
 var songList = document.getElementById("songList");
 var audio = document.getElementById("sound");
 var songTitle = document.getElementById("songTitle");
+var timeTxt = document.getElementById("timeTxt");
+var changingTime = false;
 
 audio.addEventListener("ended", function(e) {
   nextSong();
 });
 
+setInterval (function () {
+  if(!audio.paused && !timeTxt.focused) {
+    var a = audio.currentTime;
+    timeTxt.value = a;
+  }
+}, 1000);
+
 function prepSong() {
   var currentSong = songList.children[0];
   audio.src = currentSong.getAttribute("uri");
   songTitle.textContent = "Now Playing: "+Polymer.dom(currentSong).textContent;
+  console.log(audio.duration);
   sendSongInfo();
 }
 

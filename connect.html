@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Connect -Audio Link</title>
+    
     <link href="bower_components/paper-button/paper-button.html" rel="import">
     <link href="bower_components/iron-flex-layout/iron-flex-layout.html" rel="import">
     <link href="bower_components/paper-input/paper-input.html" rel="import">
@@ -23,6 +25,7 @@
         text-align: center;
         font-size: 4vh;
       }
+    
     </style>
   </head>
   <body class="fullbleed layout start-justified vertical">
@@ -38,7 +41,7 @@
     <div class="UI">Now Playing: </div>
     <div id="info" style="text-align: center; font-size: 6vh;">No Song Loaded</div>
     <div class="UI" id="pausedTxt" style="display: none">Paused</div>
-    
+    <div class="UI" id="timeTxt">0:00</div>
     <script src="https://cdn.rawgit.com/peers/peerjs/master/dist/peer.min.js"></script>
     <script src="connect.js" type="text/javascript"></script>
   </body>

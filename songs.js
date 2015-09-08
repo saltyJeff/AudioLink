@@ -2,7 +2,6 @@ var songList = document.getElementById("songList");
 var tabs = document.getElementById("tabs");
 var pages = document.getElementById("pages");
 
-
 tabs.addEventListener('iron-select',function(){
   pages.selected = tabs.selected;
 });
