@@ -11,7 +11,7 @@ new Slip(songList);
 songList.addEventListener('slip:reorder', function(e) {
     e.target.parentNode.insertBefore(e.target, e.detail.insertBefore);
 
-  if(e.target == songList.children[0]) {
+    if(e.target == songList.children[0] || e.detail.insertBefore == null) {
       prepSong();
       play();
     }
